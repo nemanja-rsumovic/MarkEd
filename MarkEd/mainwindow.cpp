@@ -166,6 +166,11 @@ void MainWindow::setupToolBar()
         return a;
     };
 
+    actionToggleTree = toolbar->addAction("☰");
+    actionToggleTree->setToolTip("Toggle file tree (Ctrl+\\)");
+    connect(actionToggleTree, &QAction::triggered, this, &MainWindow::toggleFileTree);
+    toolbar->addSeparator();
+
     addBtn("B",   "Bold (Ctrl+B)",          &MainWindow::insertBold);
     addBtn("I",   "Italic (Ctrl+I)",         &MainWindow::insertItalic);
     addBtn("S",   "Strikethrough",           &MainWindow::insertStrikethrough);
@@ -625,7 +630,9 @@ void MainWindow::exportPdf()
 
 void MainWindow::toggleFileTree()
 {
-    sidePanel->setVisible(!sidePanel->isVisible());
+    bool visible = sidePanel->isVisible();
+    sidePanel->setVisible(!visible);
+    actionToggleTree->setToolTip(visible ? "Show file tree (Ctrl+\\)" : "Hide file tree (Ctrl+\\)");
 }
 
 void MainWindow::togglePreview()

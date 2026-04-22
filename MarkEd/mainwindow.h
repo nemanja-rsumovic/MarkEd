@@ -61,6 +61,8 @@ private:
     QTreeView*        fileTree;
     QFileSystemModel* fsModel;
 
+    QAction* actionToggleTree;
+
     QTimer*  previewTimer;
     QLabel*  lblCursorPos;
     QLabel*  lblWordCount;
