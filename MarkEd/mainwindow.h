@@ -47,6 +47,7 @@ private slots:
 
     void toggleFileTree();
     void togglePreview();
+    void exportPdf();
 
 private:
     Ui::MainWindow *ui;

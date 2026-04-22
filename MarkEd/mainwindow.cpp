@@ -128,6 +128,8 @@ void MainWindow::setupMenuBar()
     fileMenu->addAction("Save",        this, &MainWindow::saveFile,   QKeySequence::Save);
     fileMenu->addAction("Save As...",  this, &MainWindow::saveFileAs, QKeySequence::SaveAs);
     fileMenu->addSeparator();
+    fileMenu->addAction("Export as PDF", this, &MainWindow::exportPdf, QKeySequence("Ctrl+E"));
+    fileMenu->addSeparator();
     fileMenu->addAction("Quit", qApp, &QApplication::quit, QKeySequence::Quit);
 
     QMenu* viewMenu = menuBar()->addMenu("View");
@@ -601,6 +603,25 @@ void MainWindow::insertCodeBlock()
 }
 
 /* View Toggles */
+
+void MainWindow::exportPdf()
+{
+    QString path = QFileDialog::getSaveFileName(this, "Export as PDF",
+        QDir::homePath(), "PDF files (*.pdf)");
+    if (path.isEmpty()) return;
+
+    // printToPdf je na QWebEnginePage — renderuje trenutni HTML preview direktno u PDF
+    connect(preview->page(), &QWebEnginePage::pdfPrintingFinished,
+            this, [this](const QString& filePath, bool success) {
+        disconnect(preview->page(), &QWebEnginePage::pdfPrintingFinished, this, nullptr);
+        if (success)
+            statusBar()->showMessage("Exported: " + filePath, 4000);
+        else
+            statusBar()->showMessage("Export failed.", 4000);
+    });
+
+    preview->page()->printToPdf(path);
+}
 
 void MainWindow::toggleFileTree()
 {
