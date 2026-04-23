@@ -216,6 +216,8 @@ void MainWindow::setupEditor()
     editor->setLineWrapMode(QPlainTextEdit::WidgetWidth);
     editor->setTabStopDistance(28);
     editor->setPlaceholderText("Start writing Markdown...");
+
+    highlighter = new MarkdownHighlighter(editor->document());
 }
 
 /* Preview */

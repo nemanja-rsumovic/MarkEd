@@ -12,6 +12,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QAction>
+#include "highlighter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -61,7 +62,8 @@ private:
     QTreeView*        fileTree;
     QFileSystemModel* fsModel;
 
-    QAction* actionToggleTree;
+    QAction*              actionToggleTree;
+    MarkdownHighlighter*  highlighter;
 
     QTimer*  previewTimer;
     QLabel*  lblCursorPos;

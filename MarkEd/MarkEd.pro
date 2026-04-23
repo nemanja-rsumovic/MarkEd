@@ -11,11 +11,13 @@ LIBS += -lmd4c
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    mdrenderer.cpp
+    mdrenderer.cpp \
+    highlighter.cpp
 
 HEADERS += \
     mainwindow.h \
-    mdrenderer.h
+    mdrenderer.h \
+    highlighter.h
 
 FORMS += \
     mainwindow.ui
