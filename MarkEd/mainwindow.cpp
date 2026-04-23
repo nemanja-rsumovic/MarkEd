@@ -46,6 +46,8 @@ MainWindow::MainWindow(QWidget *parent)
     });
     connect(editor, &QPlainTextEdit::cursorPositionChanged,
             this, &MainWindow::onCursorPositionChanged);
+    connect(editor->verticalScrollBar(), &QScrollBar::valueChanged,
+            this, &MainWindow::syncScrollToPreview);
 
     QShortcut* saveShortcut = new QShortcut(QKeySequence::Save, this);
     connect(saveShortcut, &QShortcut::activated, this, &MainWindow::saveFile);
@@ -610,6 +612,17 @@ void MainWindow::insertCodeBlock()
 }
 
 /* View Toggles */
+
+void MainWindow::syncScrollToPreview(int value)
+{
+    QScrollBar* sb = editor->verticalScrollBar();
+    if (sb->maximum() == 0) return;
+
+    double pct = (double)value / sb->maximum();
+    // šalje se JavaScript komanda u preview koji skroluje na isti relativni položaj
+    QString js = QString("window.scrollTo(0, %1 * (document.body.scrollHeight - window.innerHeight));").arg(pct);
+    preview->page()->runJavaScript(js);
+}
 
 void MainWindow::exportPdf()
 {

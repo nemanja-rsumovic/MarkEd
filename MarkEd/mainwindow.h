@@ -49,6 +49,7 @@ private slots:
     void toggleFileTree();
     void togglePreview();
     void exportPdf();
+    void syncScrollToPreview(int value);
 
 private:
     Ui::MainWindow *ui;
