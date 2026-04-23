@@ -50,6 +50,9 @@ private slots:
     void togglePreview();
     void exportPdf();
     void syncScrollToPreview(int value);
+    void zoomIn();
+    void zoomOut();
+    void zoomReset();
 
 private:
     Ui::MainWindow *ui;

@@ -137,6 +137,10 @@ void MainWindow::setupMenuBar()
     QMenu* viewMenu = menuBar()->addMenu("View");
     viewMenu->addAction("Toggle File Tree", this, &MainWindow::toggleFileTree, QKeySequence("Ctrl+\\"));
     viewMenu->addAction("Toggle Preview",   this, &MainWindow::togglePreview,  QKeySequence("Ctrl+Shift+P"));
+    viewMenu->addSeparator();
+    viewMenu->addAction("Zoom In",    this, &MainWindow::zoomIn,    QKeySequence("Ctrl++"));
+    viewMenu->addAction("Zoom Out",   this, &MainWindow::zoomOut,   QKeySequence("Ctrl+-"));
+    viewMenu->addAction("Reset Zoom", this, &MainWindow::zoomReset, QKeySequence("Ctrl+0"));
 
     QMenu* insertMenu = menuBar()->addMenu("Insert");
     insertMenu->addAction("Bold",           this, &MainWindow::insertBold,          QKeySequence("Ctrl+B"));
@@ -612,6 +616,23 @@ void MainWindow::insertCodeBlock()
 }
 
 /* View Toggles */
+
+void MainWindow::zoomIn()
+{
+    double z = preview->zoomFactor();
+    if (z < 3.0) preview->setZoomFactor(z + 0.1);
+}
+
+void MainWindow::zoomOut()
+{
+    double z = preview->zoomFactor();
+    if (z > 0.3) preview->setZoomFactor(z - 0.1);
+}
+
+void MainWindow::zoomReset()
+{
+    preview->setZoomFactor(1.0);
+}
 
 void MainWindow::syncScrollToPreview(int value)
 {
