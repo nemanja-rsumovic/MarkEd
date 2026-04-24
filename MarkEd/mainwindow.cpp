@@ -130,7 +130,7 @@ void MainWindow::setupMenuBar()
     fileMenu->addAction("Open Folder", this, &MainWindow::openFolder, QKeySequence("Ctrl+Shift+O"));
     fileMenu->addSeparator();
     fileMenu->addAction("Save",        this, &MainWindow::saveFile,   QKeySequence::Save);
-    fileMenu->addAction("Save As...",  this, &MainWindow::saveFileAs, QKeySequence::SaveAs);
+    fileMenu->addAction("Save As...",  this, &MainWindow::saveFileAs, QKeySequence("Ctrl+Shift+S"));
     fileMenu->addSeparator();
     fileMenu->addAction("Export as PDF", this, &MainWindow::exportPdf, QKeySequence("Ctrl+E"));
     fileMenu->addSeparator();
@@ -147,7 +147,7 @@ void MainWindow::setupMenuBar()
     QMenu* insertMenu = menuBar()->addMenu("Insert");
     insertMenu->addAction("Bold",           this, &MainWindow::insertBold,          QKeySequence("Ctrl+B"));
     insertMenu->addAction("Italic",         this, &MainWindow::insertItalic,        QKeySequence("Ctrl+I"));
-    insertMenu->addAction("Strikethrough",  this, &MainWindow::insertStrikethrough, QKeySequence("Ctrl+Shift+S"));
+    insertMenu->addAction("Strikethrough",  this, &MainWindow::insertStrikethrough, QKeySequence("Ctrl+Shift+X"));
     insertMenu->addSeparator();
     insertMenu->addAction("Heading 1",      this, &MainWindow::insertH1);
     insertMenu->addAction("Heading 2",      this, &MainWindow::insertH2);
