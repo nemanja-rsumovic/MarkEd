@@ -49,9 +49,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(editor->verticalScrollBar(), &QScrollBar::valueChanged,
             this, &MainWindow::syncScrollToPreview);
 
-    QShortcut* saveShortcut = new QShortcut(QKeySequence::Save, this);
-    connect(saveShortcut, &QShortcut::activated, this, &MainWindow::saveFile);
-
     updatePreview();
 }
 
