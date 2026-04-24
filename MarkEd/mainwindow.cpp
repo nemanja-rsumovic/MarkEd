@@ -49,6 +49,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(editor->verticalScrollBar(), &QScrollBar::valueChanged,
             this, &MainWindow::syncScrollToPreview);
 
+    autoSaveTimer = new QTimer(this);
+    autoSaveTimer->setInterval(30000);
+    connect(autoSaveTimer, &QTimer::timeout, this, &MainWindow::autoSave);
+    autoSaveTimer->start();
+
     updatePreview();
 }
 
@@ -629,6 +634,13 @@ void MainWindow::zoomOut()
 void MainWindow::zoomReset()
 {
     preview->setZoomFactor(1.0);
+}
+
+void MainWindow::autoSave()
+{
+    if (!unsavedChanges || currentFilePath.isEmpty()) return;
+    saveFile();
+    statusBar()->showMessage("Auto-saved", 2000);
 }
 
 void MainWindow::syncScrollToPreview(int value)

@@ -53,6 +53,7 @@ private slots:
     void zoomIn();
     void zoomOut();
     void zoomReset();
+    void autoSave();
 
 private:
     Ui::MainWindow *ui;
@@ -70,6 +71,7 @@ private:
     MarkdownHighlighter*  highlighter;
 
     QTimer*  previewTimer;
+    QTimer*  autoSaveTimer;
     QLabel*  lblCursorPos;
     QLabel*  lblWordCount;
 
