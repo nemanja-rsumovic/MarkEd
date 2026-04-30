@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkEd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="toolbar">
+        <span id="app-title">MarkEd</span>
+        <div id="toolbar-buttons">
+            <button onclick="newFile()" title="New (Ctrl+N)">New</button>
+            <button onclick="openFile()" title="Open (Ctrl+O)">Open</button>
+            <button onclick="saveFile()" title="Save (Ctrl+S)">Save</button>
+            <button onclick="saveFileAs()" title="Save As (Ctrl+Shift+S)">Save As</button>
+            <div class="separator"></div>
+            <button onclick="exportPdf()" title="Export as PDF">PDF</button>
+            <div class="separator"></div>
+            <button onclick="insertBold()" title="Bold (Ctrl+B)"><b>B</b></button>
+            <button onclick="insertItalic()" title="Italic (Ctrl+I)"><i>I</i></button>
+            <button onclick="insertStrikethrough()" title="Strikethrough (Ctrl+Shift+X)"><s>S</s></button>
+            <button onclick="insertLink()" title="Link (Ctrl+K)">Link</button>
+            <button onclick="insertCodeBlock()" title="Code Block">Code</button>
+            <div class="separator"></div>
+            <button onclick="insertH1()">H1</button>
+            <button onclick="insertH2()">H2</button>
+            <button onclick="insertH3()">H3</button>
+            <div class="separator"></div>
+            <button onclick="togglePreview()" title="Toggle Preview (Ctrl+Shift+P)">Preview</button>
+            <button onclick="zoomIn()" title="Zoom In (Ctrl++)">+</button>
+            <button onclick="zoomOut()" title="Zoom Out (Ctrl+-)">−</button>
+            <button onclick="zoomReset()" title="Reset Zoom (Ctrl+0)">1:1</button>
+        </div>
+        <div id="status">
+            <span id="status-msg"></span>
+            <span id="word-count">0 words</span>
+            <span id="cursor-pos">Ln 1, Col 1</span>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="editor-panel">
+            <textarea id="editor"></textarea>
+        </div>
+        <div id="divider"></div>
+        <div id="preview-panel">
+            <div id="preview"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
