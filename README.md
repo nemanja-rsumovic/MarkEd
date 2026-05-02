@@ -2,7 +2,10 @@
 
 A lightweight Markdown editor built with Qt, featuring a live preview panel and a clean dark interface.
 
-**Try it online: [MaekEdWeb](https://markedweb.netlify.app)**
+**Try it online: [MarkEdWeb](https://markedweb.netlify.app)**
+## DEMO
+
+[![demo](https://img.youtube.com/vi/u4HBzngJNQU/maxresdefault.jpg)](https://www.youtube.com/watch?v=u4HBzngJNQU)
 
 ## Versions
 
